@@ -1,6 +1,6 @@
 # GEM3D: Generative Medial Abstractions for 3D Shape Synthesis
 
-### [Project Page](https://lodurality.github.io/GEM3D/](https://lodurality.github.io/GEM3D/) | [Paper (arXiv)](https://arxiv.org/abs/2402.16994)
+### [Project Page](https://lodurality.github.io/GEM3D/) | [Paper (arXiv)](https://arxiv.org/abs/2402.16994)
 
 **Official PyTorch implementation of GEM3D (SIGGRAPH 2024)**
 
