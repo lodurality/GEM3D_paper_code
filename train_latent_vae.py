@@ -6,7 +6,7 @@ import torch
 
 from utils.data import Surf2SkeletonShapeNet, Surf2SkeletonShapeNetMemory, collate_reprs_finetuning
 from utils.p2pnet_utils import compute_chamfer
-from utils.spatial import get_topk_nns_dilated, get_flat_queries_and_centers, get_geodesic_skel_patches
+from utils.spatial import get_topk_nns_dilated, get_flat_queries_and_centers
 from models.skelnet import SkelAutoencoder
 from models.vecset_encoder import VecSetEncoder, P2PNetVecSetEncoder
 from models.point_transformer import P2PNetPointTransformer
