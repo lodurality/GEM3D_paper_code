@@ -4,8 +4,6 @@
 
 **Official PyTorch implementation of GEM3D (SIGGRAPH 2024)**
 
-## Dependencies (TODO)
-
 ## Quickstart
 Download model checkpoints [here](https://drive.google.com/drive/u/3/folders/1vgpzSmFjg61YDlYTIY4kDo28yYC-r02V). Place them in the `submission_checkpoints` folder in the root of the repository. Refer to TODO for detailed checkpoint description.
 
