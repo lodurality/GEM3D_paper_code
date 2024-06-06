@@ -6,7 +6,7 @@ import torch
 
 from utils.data import Surf2SkeletonShapeNet, Surf2SkeletonShapeNetMemory, collate_reprs_finetuning, AxisScaling
 from utils.p2pnet_utils import compute_chamfer
-from utils.spatial import get_topk_nns_dilated, get_flat_queries_and_centers, get_geodesic_skel_patches
+from utils.spatial import get_topk_nns_dilated, get_flat_queries_and_centers
 from models.skelnet import SkelAutoencoder
 from models.vecset_encoder import VecSetEncoder, P2PNetVecSetEncoder
 from models.point_transformer import P2PNetPointTransformer
@@ -14,6 +14,7 @@ from utils.p2pnet_utils import compute_chamfer_and_density
 import argparse
 import json
 from time import time
+from functools import partial
 
 
 def make_train_step_volume(data, model, optimizer, args, train=True):

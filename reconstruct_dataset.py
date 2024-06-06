@@ -3,11 +3,8 @@ import json
 import os
 import sys
 
-sys.path.append('/home/dmpetrov/Repos/shape_generation/')
-sys.path.append('/home/dmpetrov_umass_edu/Repos/top_shape_generation')
-
 import torch
-from models.skelnet import *
+from models.skelnet import SkelAutoencoder
 from utils.spatial import *
 from models.point_transformer import P2PNetPointTransformer
 from utils.data import Surf2SkeletonShapeNetMemory, collate_reprs_simple
@@ -16,7 +13,7 @@ from sklearn.neighbors import kneighbors_graph, radius_neighbors_graph
 from scipy.spatial import KDTree
 from utils.reconstruction import get_mesh_from_latent_combination
 import gc
-import networkx as nx
+from functools import partial
 
 
 parser = argparse.ArgumentParser(description='Shape overfitting params')
