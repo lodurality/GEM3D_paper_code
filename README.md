@@ -1,13 +1,11 @@
 # GEM3D: Generative Medial Abstractions for 3D Shape Synthesis
 
-### [Project Page]([https://lodurality.github.io/GEM3D/](https://lodurality.github.io/GEM3D/)) | [Paper (arXiv)]([https://arxiv.org/abs/2402.16994](https://arxiv.org/abs/2402.16994))
+### [Project Page](https://lodurality.github.io/GEM3D/) | [Paper (arXiv)](https://arxiv.org/abs/2402.16994)
 
 **Official PyTorch implementation of GEM3D (SIGGRAPH 2024)**
 
-## Dependencies (TODO)
-
 ## Quickstart
-Download model checkpoints [here]([https://drive.google.com/drive/u/3/folders/1vgpzSmFjg61YDlYTIY4kDo28yYC-r02V]). Place them in the `submission_checkpoints` folder in the root of the repository. Refer to TODO for detailed checkpoint description.
+Download model checkpoints [here](https://drive.google.com/drive/u/3/folders/1vgpzSmFjg61YDlYTIY4kDo28yYC-r02V). Place them in the `submission_checkpoints` folder in the root of the repository. Refer to TODO for detailed checkpoint description.
 
 ### Generation
 To generate mesh using GEM3D run the following command
