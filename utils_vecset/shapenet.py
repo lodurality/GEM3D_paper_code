@@ -307,17 +307,7 @@ class ShapeNetSkel(data.Dataset):
 
 
         point_path = os.path.join(self.point_folder, category, self.occupancies_base_folder, model + '.npz')
-        '''
-        try:
-            with np.load(point_path) as data:
-                vol_points = data['vol_points']
-                vol_label = data['vol_label']
-                near_points = data['near_points']
-                near_label = data['near_label']
-        except Exception as e:
-            print(e)
-            print(point_path)
-        '''
+
         if self.use_dilg_scale:
             with open(point_path.replace('.npz', '.npy'), 'rb') as f:
                 scale = np.load(f).item()
