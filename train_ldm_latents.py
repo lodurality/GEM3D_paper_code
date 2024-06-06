@@ -21,7 +21,7 @@ import models_class_cond
 from models.skelnet import SkelAutoencoder
 from models.vecset_encoder import VecSetEncoder
 from models.var_ae import KLAutoEncoder, StandarScaler
-from utils_vecset.datasets import ShapeNetSkel, ShapeNetSkelMemory
+from utils_vecset.datasets import ShapeNetSkel
 
 from engine_ldm import train_one_epoch_latent, evaluate_latent
 

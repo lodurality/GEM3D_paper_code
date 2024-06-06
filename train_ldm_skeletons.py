@@ -16,7 +16,7 @@ import utils_vecset.lr_decay as lrd
 import utils_vecset.misc as misc
 from utils_vecset.datasets import build_shape_surface_occupancy_dataset, build_shape_surface_skeleton_dataset
 from utils_vecset.misc import NativeScalerWithGradNormCount as NativeScaler
-from utils_vecset.shapenet import ShapeNetSkelMemory, ShapeNetSkel
+from utils_vecset.shapenet import ShapeNetSkel
 
 import models_class_cond
 from models.skelnet import SkelAutoencoder
