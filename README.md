@@ -1,4 +1,3 @@
-
 # GEM3D: Generative Medial Abstractions for 3D Shape Synthesis
 
 ### [Project Page](https://lodurality.github.io/GEM3D/) | [Paper (arXiv)](https://arxiv.org/abs/2402.16994)
@@ -77,8 +76,13 @@ To train surface diffusion run the following
 bash ./bash_scripts/train_ldm_latents.sh 
 ```
 
-## Preprocessing (TODO)
+## Preprocessing 
+Data preparation take watertight mesh as input and produces shape skeleton graph (we don't use connectivity data in our paper), enveloping implicit function sampling and simplified skeletons for training of skeleton prediction model. It is strongly advised to run skeleton extraction on GPU that supports CUDA (it does not need to be powerful).
 
-## Evaluation (TODO)
+To run preprocessing on sample inputs, run the following
+```
+bash ./bash_scripts/preprocess_data.sh 
+``` 
+We provide sample outputs of this script in `sample_data/preprocessing/sample_outputs/`. For detailed description of our preprocessing refer to TODO.
 
 ## Acknowledgements (TODO)
