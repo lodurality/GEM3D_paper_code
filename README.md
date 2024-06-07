@@ -1,3 +1,4 @@
+
 # GEM3D: Generative Medial Abstractions for 3D Shape Synthesis
 
 ### [Project Page](https://lodurality.github.io/GEM3D/) | [Paper (arXiv)](https://arxiv.org/abs/2402.16994)
@@ -38,10 +39,46 @@ bash ./bash_scripts/reconstruct_thingi10k.sh
 ```
 Outputs will be saved in `custom_outputs/reconstruction/` folder.  We provide sample outputs of running the code in `sample_outputs/reconstruction/` folder.
 
-### Full data training (TODO)
+## Training
 
-### Preprocessing (TODO)
+Since our dataset is fairly large we provide commands to run training on sample data. For full scale training download our data and replace links accordingly. Download instructions and data structure description are provided HERE (TODO). 
 
-### Evaluation (TODO)
+### Shape reconstruction
+Reconstruction training consists of two independent stages: skeleton autoencoder training and skeleton prediction training (for inference).
 
-### Acknowledgements (TODO)
+To train skeleton autoencoder with envelope-based implicit function run the following:
+```
+bash ./bash_scripts/train_skeleton_autoencoder.sh 
+```
+To train skeleton prediction model (needed for inference) run the following:
+```
+bash ./bash_scripts/train_skeleton_prediction.sh 
+```
+Model checkpoints will be saved in `checkpoints/` folder.
+
+### Shape generation
+Generative training consists of two independent stages: skeleton diffusion conditioned on shape label and surface diffusion conditioned on skeleton and shape label. 
+
+#### Skeleton diffusion
+Model is conditioned on shape label and is trained on ground truth skeletons only. 
+To train it, run the following
+```
+bash ./bash_scripts/train_ldm_skeletons.sh 
+```
+#### Surface diffusion
+Model is conditioned on shape label and skeleton. It is trained in two stages: 1) linear VAE to normalize autoencoder latents to standard gaussian distribution 2) surface diffusion model on encoded latents.  Both stages require encoder from pretrained skeleton autoencoder.
+
+To train latent VAE run the following
+```
+bash ./bash_scripts/train_latent_vae.sh 
+```
+To train surface diffusion run the following
+```
+bash ./bash_scripts/train_ldm_latents.sh 
+```
+
+## Preprocessing (TODO)
+
+## Evaluation (TODO)
+
+## Acknowledgements (TODO)
