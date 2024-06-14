@@ -1,4 +1,4 @@
-SCRIPT_PATH=/home/$USER/Repos/gem3d_paper_code/scripts
+SCRIPT_PATH=/home/$USER/Repos/gem3d_paper_code/preprocessing_scripts
 data_path=/home/$USER/Repos/gem3d_paper_code/sample_data/preprocessing/input/
 simple_mesh_folder=watertight_simple
 num_faces=200000 #num faces for simplification

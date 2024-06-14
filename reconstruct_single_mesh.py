@@ -3,27 +3,21 @@ import json
 import os
 import sys
 
-sys.path.append('/home/dmpetrov/Repos/shape_generation/')
-sys.path.append('/home/dmpetrov_umass_edu/Repos/top_shape_generation')
-
 import torch
 from models.skelnet import *
 from utils.spatial import *
 from models.point_transformer import P2PNetPointTransformer
-from utils.data import Surf2SkeletonShapeNetMemory, collate_reprs_simple
 from models.vecset_encoder import VecSetEncoder, P2PNetVecSetEncoder
 from sklearn.neighbors import kneighbors_graph, radius_neighbors_graph
 from scipy.spatial import KDTree
 from utils.reconstruction import get_mesh_from_latent_combination
 import gc
-import networkx as nx
-
 
 parser = argparse.ArgumentParser(description='Shape overfitting params')
 parser.add_argument('--input_mesh_path', type=str, required=True)
 parser.add_argument('--output_folder', type=str, required=True)
 parser.add_argument('--model_path', type=str, required=True)
-parser.add_argument('--skelmodel_path', type=str, default=None)
+parser.add_argument('--skelmodel_path', type=str, required=True)
 parser.add_argument('--point_bs', type=int, default=50000)
 parser.add_argument('--skel_nn', type=int, default=1)
 parser.add_argument('--num_skel_samples', type=int, default=512)
