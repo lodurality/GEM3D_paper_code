@@ -85,4 +85,19 @@ bash ./bash_scripts/preprocess_data.sh
 ``` 
 We provide sample outputs of this script in `sample_data/preprocessing/sample_outputs/`. For detailed description of our preprocessing refer to TODO.
 
+## Preprocessed data
+
+You can download preprocessed data using link below:
+
+https://console.cloud.google.com/storage/browser/gem3d_data/data?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&hl=en&project=prime-elf-175923
+
+Folder 'data' contains ShapeNet categories' folders. In each folder you fill find the following:
+
+skeletons_min_sdf_iter_50 -- processed skeletons
+skelrays_min_sdf_iter_50_1000rays_random -- sampled enveloping implicit function
+4_pointcloud -- pointclouds from 3DILG/3DShape2VecSet data and scaling factors (important for evaluation)
+occupancies_compact -- storage optimized occupancies from 3DILG/3DShape2VecSet data: if you want to train our model, you don't need occupancies there, just want train/val/test splits.
+
+If you have any question about the data, feel free to open the issue or email me (Dmitrii Petrov). 
+
 ## Acknowledgements (TODO)
