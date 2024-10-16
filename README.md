@@ -40,7 +40,7 @@ Outputs will be saved in `custom_outputs/reconstruction/` folder.  We provide sa
 
 ## Training
 
-Since our dataset is fairly large we provide commands to run training on sample data. For full scale training download our data and replace links accordingly. Download instructions and data structure description are provided HERE (TODO). 
+Since our dataset is fairly large we provide commands to run training on sample data. For full scale training download our data and replace links accordingly. Download instructions and data structure description are provided [below](https://github.com/lodurality/GEM3D_paper_code?tab=readme-ov-file#preprocessed-data). 
 
 ### Shape reconstruction
 Reconstruction training consists of two independent stages: skeleton autoencoder training and skeleton prediction training (for inference).
@@ -83,7 +83,7 @@ To run preprocessing on sample inputs, run the following
 ```
 bash ./bash_scripts/preprocess_data.sh 
 ``` 
-We provide sample outputs of this script in `sample_data/preprocessing/sample_outputs/`. For detailed description of our preprocessing refer to TODO.
+We provide sample outputs of this script in `sample_data/preprocessing/sample_outputs/`. For detailed description of our preprocessing refer to the paper.
 
 ## Preprocessed data
 
