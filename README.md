@@ -100,4 +100,8 @@ occupancies_compact -- storage optimized occupancies from 3DILG/3DShape2VecSet d
 
 If you have any question about the data, feel free to open the issue or email me (Dmitrii Petrov). 
 
-## Acknowledgements (TODO)
+## Acknowledgements
+
+First and foremost we want to thank Biao Zhang and his co-authors for coming up with efficient irregular latent grid representation and releasing their data and code for [3DILG](https://github.com/1zb/3DILG) and [3DShape2VecSet](https://github.com/1zb/3DShape2VecSet) papers. Without them, this paper wouldn't be possible. 
+
+We thank Joseph Black, Rik Sengupta and Alexey Goldis for providing useful feedback and input to our project. We acknowledge funding from Adobe Research, the EU H2020 Research Innovation Programme, and the Republic of Cyprus through the Deputy Ministry of Research, Innovation and Digital Policy (GA 739578). 
