@@ -93,10 +93,13 @@ https://console.cloud.google.com/storage/browser/gem3d_data/data?pageState=(%22S
 
 Folder 'data' contains ShapeNet categories' folders. In each folder you fill find the following:
 
-skeletons_min_sdf_iter_50 -- processed skeletons
-skelrays_min_sdf_iter_50_1000rays_random -- sampled enveloping implicit function
-4_pointcloud -- pointclouds from 3DILG/3DShape2VecSet data and scaling factors (important for evaluation)
-occupancies_compact -- storage optimized occupancies from 3DILG/3DShape2VecSet data: if you want to train our model, you don't need occupancies there, just want train/val/test splits.
+`skeletons_min_sdf_iter_50` -- processed skeletons
+
+`skelrays_min_sdf_iter_50_1000rays_random` -- sampled enveloping implicit function
+
+`4_pointcloud` -- pointclouds from 3DILG/3DShape2VecSet data and scaling factors (important for evaluation)
+
+`occupancies_compact` -- storage optimized occupancies from 3DILG/3DShape2VecSet data: if you want to train our model, you don't need occupancies there, just want train/val/test splits.
 
 If you have any question about the data, feel free to open the issue or email me (Dmitrii Petrov). 
 
