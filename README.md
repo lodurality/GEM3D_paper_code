@@ -6,8 +6,8 @@
 
 ## UPDATES
 
-- Added a checkpoint guide covering file layout, model roles, and checkpoint formats.
-- Updated the Google Drive checkpoint download link after the previous link was disabled by UMass.
+- **2026-10-30:** Added a checkpoint guide covering file layout, model roles, and checkpoint formats.
+- **2026-10-30:** Updated the Google Drive checkpoint download link after the previous link was disabled by UMass.
 
 ## Quickstart
 Download model checkpoints [here](https://drive.google.com/drive/folders/1CBml8E9mUek4-eHeGLVKFRnGavFCv11t). Place them in the `submission_checkpoints` folder in the root of the repository. See [Model checkpoints](#model-checkpoints) for the expected files and formats.
