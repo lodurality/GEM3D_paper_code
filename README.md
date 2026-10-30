@@ -5,7 +5,7 @@
 **Official PyTorch implementation of GEM3D (SIGGRAPH 2024)**
 
 ## Quickstart
-Download model checkpoints [here](https://drive.google.com/drive/u/3/folders/1vgpzSmFjg61YDlYTIY4kDo28yYC-r02V). Place them in the `submission_checkpoints` folder in the root of the repository. Refer to TODO for detailed checkpoint description.
+Download model checkpoints [here](https://drive.google.com/drive/folders/1CBml8E9mUek4-eHeGLVKFRnGavFCv11t). Place them in the `submission_checkpoints` folder in the root of the repository. Refer to TODO for detailed checkpoint description.
 
 ### Generation
 To generate mesh using GEM3D run the following command
