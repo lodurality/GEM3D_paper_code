@@ -4,8 +4,13 @@
 
 **Official PyTorch implementation of GEM3D (SIGGRAPH 2024)**
 
+## UPDATES
+
+- Added a checkpoint guide covering file layout, model roles, and checkpoint formats.
+- Updated the Google Drive checkpoint download link after the previous link was disabled by UMass.
+
 ## Quickstart
-Download model checkpoints [here](https://drive.google.com/drive/folders/1CBml8E9mUek4-eHeGLVKFRnGavFCv11t). Place them in the `submission_checkpoints` folder in the root of the repository. Refer to TODO for detailed checkpoint description.
+Download model checkpoints [here](https://drive.google.com/drive/folders/1CBml8E9mUek4-eHeGLVKFRnGavFCv11t). Place them in the `submission_checkpoints` folder in the root of the repository. See [Model checkpoints](#model-checkpoints) for the expected files and formats.
 
 ### Generation
 To generate mesh using GEM3D run the following command
@@ -37,6 +42,44 @@ To run Thingi10K reconstruction using sample data run the following:
 bash ./bash_scripts/reconstruct_thingi10k.sh
 ```
 Outputs will be saved in `custom_outputs/reconstruction/` folder.  We provide sample outputs of running the code in `sample_outputs/reconstruction/` folder.
+
+## Model checkpoints
+
+GEM3D uses separate models for skeleton prediction, shape reconstruction, and the two diffusion stages. The guide below maps the checkpoint paths used by the supplied scripts to their roles, so you can select the files needed for inference or training.
+
+### Expected file layout
+
+The scripts reference the following files under the repository root:
+
+```text
+submission_checkpoints/
+├── skelnet_skelrays_reg_abs_loss_min_sdf_1000_rays_8_heads.pth
+├── skelnet_skelrays_reg_abs_loss_min_sdf_1000_rays_8_heads_1200.pth
+├── p2p_vecset_skeletons_min_sdf_iter_50_p2p_min_sdf_vecset_from_ckpt.pth
+├── checkpoint_skel_ldm_1024.pth
+├── checkpoint_l256_fin.pth
+└── kl_ae_skeletons_min_sdf_iter_50_dim_256_2080ti.pth
+```
+
+| Checkpoint | Role and use |
+| --- | --- |
+| `skelnet_skelrays_reg_abs_loss_min_sdf_1000_rays_8_heads.pth` | Skeleton autoencoder with the envelope-based implicit decoder. Used by reconstruction (`--model_path`) and as the pretrained autoencoder for latent VAE and surface diffusion training. |
+| `skelnet_skelrays_reg_abs_loss_min_sdf_1000_rays_8_heads_1200.pth` | Skeleton autoencoder checkpoint selected by `bash_scripts/generate_shapes.sh` (`--ae-pth`) to decode generated surface latents into a mesh. |
+| `p2p_vecset_skeletons_min_sdf_iter_50_p2p_min_sdf_vecset_from_ckpt.pth` | Skeleton prediction model for reconstruction (`--skelmodel_path`). The reconstruction code loads this into a separate model and copies its `skel_model` into the reconstruction autoencoder. |
+| `checkpoint_skel_ldm_1024.pth` | Shape-label-conditioned skeleton diffusion model (`--skel_dm_pth`). Samples skeleton point clouds. |
+| `checkpoint_l256_fin.pth` | Skeleton- and shape-label-conditioned surface diffusion model (`--latent_dm_pth`), including its latent VAE. The generation script uses `--kl_latent_dim 256`. |
+| `kl_ae_skeletons_min_sdf_iter_50_dim_256_2080ti.pth` | Standalone latent VAE used to initialize `--latent_encoder_path` during surface diffusion training. Maps autoencoder features to and from the 256-dimensional diffusion latent space. |
+
+For **reconstruction**, use the autoencoder without the `_1200` suffix and the skeleton prediction checkpoint. For **full mesh generation**, `bash_scripts/generate_shapes.sh` uses the `_1200` autoencoder and both diffusion checkpoints. Generation loads the latent VAE from the surface diffusion checkpoint, so it does not load the standalone VAE file separately.
+
+These filenames describe the paths expected by the code. Adjust the paths in the shell scripts to your local checkout and downloaded filenames; the scripts currently use `/home/$USER/Repos/gem3d_paper_code/`.
+
+### Checkpoint contents
+
+- **Autoencoder, skeleton prediction, and standalone latent VAE:** plain PyTorch state dictionaries, saved with `torch.save(model.state_dict(), path)` and loaded directly with `model.load_state_dict(torch.load(path))`. There is no outer `model` key. Reconstruction uses `strict=False` when loading the autoencoder and skeleton prediction weights.
+- **Skeleton and surface diffusion:** dictionaries whose `model` entry is the model state dictionary, loaded with `model.load_state_dict(torch.load(path)['model'])`. The surface diffusion model includes a `latent_encoder` submodule, so its state dictionary also contains the VAE weights under `latent_encoder.*`.
+
+The diffusion training save helpers in `utils_vecset/misc.py` additionally store `optimizer`, `epoch`, `scaler`, and `args` for resuming training. They write `checkpoint-<epoch>.pth` and `checkpoint_current.pth` under the configured output directory. Inference reads only `model`; the other three training scripts save plain state dictionaries without optimizer or epoch metadata.
 
 ## Training
 
